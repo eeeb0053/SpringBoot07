@@ -9,4 +9,5 @@ import lombok.Setter;
 
 @Getter @Setter @Component
 public class GradeDTO extends StudentDTO{
+    private String gradeNum, subject, score, grade, stuNum;
 }

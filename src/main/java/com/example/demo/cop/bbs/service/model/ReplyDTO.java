@@ -6,4 +6,5 @@ import lombok.Data;
 
 @Component @Data
 public class ReplyDTO extends ArticleDTO{
+    private String replyNum, content, artNum;
 }
