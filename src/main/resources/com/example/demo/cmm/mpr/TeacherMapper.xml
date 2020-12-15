@@ -6,4 +6,14 @@
 insert into teachers (name, password, subject)
 values (#{name}, #{password}, #{subject})
 </insert>
+<select id="selectAll" resultType="com.example.demo.sym.service.model.TeacherDTO">
+select tea_num teaNum, name, email, password, subject, profile_img profileImg
+from teachers
+</select>
+<select id="selectById" resultType="com.example.demo.sym.service.model.TeacherDTO"
+                        parameterType="string">
+select tea_num teaNum, name, email, password, subject, profile_img profileImg
+from teachers
+where tea_num like #{value}
+</select>
 </mapper>
