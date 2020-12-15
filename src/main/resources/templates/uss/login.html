@@ -102,37 +102,20 @@
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">                    
                     <div class="text-center coming-content">
-                        <h1>UNDER CONSTRUCTION</h1>
-                        <p>We have been spending long hours in order to launch our new website. 
-                            We will offer freebies, a brand new blog and featured content of our latest work. Join our mailing list or follow us on<br /> Facebook or Twitter to stay up to date.</p>                           
-                        <div class="social-link">
-                            <span><a href="#"><i class="fa fa-facebook"></i></a></span>
-                            <span><a href="#"><i class="fa fa-twitter"></i></a></span>
-                            <span><a href="#"><i class="fa fa-google-plus"></i></a></span>
-                        </div>
+                        <h1>학습자 로그인</h1>
                     </div>                    
                 </div>
                 <div class="col-sm-12">
-                  <h2>학생 등록화면</h2>
                     <div class="time-count">
                         <form style="border:1px solid #ccc">
                             <div class="container">
-                              <h1>Sign Up</h1>
-                              <p>Please fill in this form to create an account.</p>
-                              <hr>
                           
-                              <label for="id"><b>ID</b></label>
-                              <input type="text" placeholder="ID 입력" id="userId" required>
-                          
-                              <label for="psw"><b>비밀번호</b></label>
+                              <label for="userid"><b>아이디</b></label>
+                              <input type="text" placeholder="아이디 입력" id="userid" required>
+
+                              <label for="password"><b>비밀번호</b></label>
                               <input type="password" placeholder="비밀번호 입력" id="password" required>
                           
-                              <label for="name"><b>이름</b></label>
-                              <input type="text" placeholder="이름 입력" id="name" required>
-
-                              <label for="ssn"><b>주민등록번호</b></label>
-                              <input type="text" placeholder="주민등록번호 입력" id="ssn" required>
-                              
                               <label>
                                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
                               </label>
@@ -141,7 +124,7 @@
                           
                               <div class="clearfix">
                                 <button type="button" class="cancelbtn">Cancel</button>
-                                <button type="button" id="signupbtn" class="signupbtn">Sign Up</button>
+                                <button type="button" id="signinbtn" class="signupbtn">Sign In</button>
                               </div>
                             </div>
                           </form>
@@ -183,7 +166,6 @@
             </div>
         </div>       
     </section>
-    
 
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
@@ -192,26 +174,28 @@
     <script type="text/javascript" src="/resources/js/main.js"></script>
     <script type>
       $('#home').click(e => { location.href="/"})
-      $('#signupbtn').click(e=> {
+      $('#signinbtn').click(e=> {
         e.preventDefault()
         $.ajax({
-          url: '/teachers',
+          url: '/students/login',
           type: 'POST',
           data: JSON.stringify({
-            userId: $('#userId').val(),
-            password: $('#password').val(),
-            name: $('#name').val(),
-            ssn: $('#ssn').val()
+            userid: $('#userid').val(),
+            password: $('#password').val()
           }),
           dataType: 'json',
           contentType: 'application/json',
           success: d => {
             if(d.message === "SUCCESS"){
-              alert(`강사등록 성공`)
+              sessionStorage.setItem('userid', d.sessionUser.userid)
+              location.href = '/move/uss/profile'
+            }else{
+              alert(`아이디 혹은 비밀번호가 일치하지 않습니다.`)
+              location.href = '/move/uss/login'
             }
           },
           error: e => {
-            console.log(`강사등록 실패: ${e.responseText}`)
+            console.log(`학생 로그인 실패: ${e.responseText}`)
             location.href='/move/cmm/404'
           }
         })

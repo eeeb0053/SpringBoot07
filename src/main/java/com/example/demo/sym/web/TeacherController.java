@@ -3,6 +3,7 @@ package com.example.demo.sym.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -14,11 +15,11 @@ import com.example.demo.sym.service.model.TeacherDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RestController
+@RestController @RequestMapping("/teachers")
 public class TeacherController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired TeacherService teacherService;
-    @PostMapping("/teachers")
+    @PostMapping("")
     public Map<?,?> register(@RequestBody TeacherDTO teacher){
         var map = new HashMap<>();
         logger.info("등록하려는 강사 정보: "+teacher.toString());
