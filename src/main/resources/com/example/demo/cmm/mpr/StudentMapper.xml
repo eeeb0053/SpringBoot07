@@ -22,4 +22,12 @@
     select stu_num stuNum, userid, password, name, ssn, reg_date regDate, subject, profile_img profileImg
     from students
 </select>
+<update id="update" parameterType="com.example.demo.uss.service.model.StudentDTO">
+    update students set subject = #{subject}
+    where stu_num like #{stuNum}
+</update>
+<update id="delete" parameterType="com.example.demo.uss.service.model.StudentDTO">
+    delete from students
+    where stu_num like #{stuNum}
+</update>
 </mapper>

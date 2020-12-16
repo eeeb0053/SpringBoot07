@@ -11,4 +11,6 @@ public interface TeacherMapper {
 	public int insert(TeacherDTO teacher);
 	public List<TeacherDTO> selectAll();
 	public TeacherDTO selectById(String teaNum);
+	public int update(TeacherDTO teacher);
+	public int delete(TeacherDTO teacher);
 }

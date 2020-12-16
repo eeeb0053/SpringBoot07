@@ -516,19 +516,71 @@
 									<h5 class="card-title mb-0">${d.name}</h5>
 									<div class="text-muted mb-2">학습자</div>
 									<div>
-										<a class="btn btn-primary btn-sm" href="#">Follow</a>
-										<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
+										<a id="info-update" class="btn btn-primary btn-sm" href="#">수정</a>
+										<a id="info-delete" class="btn btn-danger btn-sm" href="#">삭제</a>
 									</div>`)		
 			$(`#subject`).html(`<h5 class="h6 card-title">수강과목</h5>
-									<a href="#" class="badge badge-primary mr-1 my-1">${d.subject}</a>
+									<span id="update-subject"><a href="#" class="badge badge-primary mr-1 my-1">${d.subject}</a></span>
 									`)
 									//stuNum, userid, password, name, ssn, regDate, subject, profileImage
 			$(`#about`).html(`<h5 class="h6 card-title">About</h5>
 									<ul class="list-unstyled mb-0">
 										<li class="mb-1"><span data-feather="home" class="feather-sm mr-1"></span> 학생번호 : <a href="#">${d.stuNum}</a></li>
-										<li class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 : <a href="#">${d.ssn}</a></li>
-										<li class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <a href="#">서울</a></li>
+										<li id="update-ssn" class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 : <a href="#">${d.ssn}</a></li>
+										<li id="update-address" class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <a href="#">서울</a></li>
 									</ul>`)
+			$(`#info-update`).click(e => {
+				$(`#update-subject`).html(`<input id="change-subject" type="text" value="${d.subject}" placeholder="${d.subject}">`)
+				$(`#update-ssn`).html(`<span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 : <input type="text" placeholder="${d.ssn}">`)
+				$(`#update-address`).html(`<span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <input type="text" placeholder="서울">
+									<div>
+										<a id="confirm-btn" class="btn btn-primary btn-sm" href="#">확인</a>
+										<a id="cancle-btn" class="btn btn-danger btn-sm" href="#">취소</a>
+									</div>`)
+				$(`#confirm-btn`).click(e => {
+					e.preventDefault()
+					$.ajax({
+						url: `/students`,
+						type: `PUT`,
+						data: JSON.stringify({
+							stuNum: d.stuNum,
+							subject: $(`#change-subject`).val()
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: d2 => {
+							if(d2.message === "SUCCESS"){
+								location.href = "/transfer/sym/mgr/student"
+							}else{
+								alert(`수정에 실패했습니다.`)
+								location.href = "/transfer/sym/mgr/student"
+							}
+						},
+						error: e => { alert(`수정오류 ${e}`)}
+					})
+				})
+			})
+			$(`#info-delete`).click(e => {
+				e.preventDefault()
+				$.ajax({
+					url: `/students`,
+					type: `DELETE`,
+					data: JSON.stringify({
+						stuNum: d.stuNum
+					}),
+					dataType: 'json',
+					contentType: 'application/json',
+					success: d2 => {
+						if(d2.message === "SUCCESS"){
+							location.href = "/transfer/sym/mgr/index"
+						}else{
+							alert(`삭제에 실패했습니다.`)
+							location.href = "/transfer/sym/mgr/student"
+						}
+					},
+						error: e => { alert(`삭제오류 ${e}`)}
+				})
+			})
 		})
 	</script>
 

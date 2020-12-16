@@ -11,4 +11,6 @@ public interface StudentService {
 	public StudentDTO login(StudentDTO student);
 	public StudentDTO detail(String userid);
 	public List<?> list();
+	public int update(StudentDTO student);
+	public int detele(StudentDTO student);
 }
