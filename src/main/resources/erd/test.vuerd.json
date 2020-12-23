@@ -1,0 +1,355 @@
+{
+  "canvas": {
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": false,
+      "columnPrimaryKey": true,
+      "columnUnique": false,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "MySQL",
+    "databaseName": "",
+    "canvasType": "ERD",
+    "language": "GraphQL",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    }
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "dept",
+        "comment": "부서",
+        "columns": [
+          {
+            "name": "deptno",
+            "comment": "부서번호",
+            "dataType": "number(2)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 63,
+              "widthDefault": 60
+            },
+            "id": "b60745dc-0772-6ebd-00e5-1c6eb539af1b"
+          },
+          {
+            "name": "dname",
+            "comment": "부서명",
+            "dataType": "varchar2(14)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 74,
+              "widthDefault": 60
+            },
+            "id": "4fe6d783-a812-d520-5375-d6c29c67062e"
+          },
+          {
+            "name": "loc",
+            "comment": "위치",
+            "dataType": "varchar2(13)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 74,
+              "widthDefault": 60
+            },
+            "id": "40238261-1adf-0f76-7ae9-246dea8acb7f"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 35,
+          "top": 113,
+          "zIndex": 141,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "id": "87a7d3b2-baf9-5b18-1aef-22080f72e527"
+      },
+      {
+        "name": "emp",
+        "comment": "사원",
+        "columns": [
+          {
+            "name": "empno",
+            "comment": "사원번호",
+            "dataType": "number(4)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 63,
+              "widthDefault": 60
+            },
+            "id": "e93d7191-f4ae-887b-a675-8043b934ee91"
+          },
+          {
+            "name": "ename",
+            "comment": "사원명",
+            "dataType": "varchar2(10)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 74,
+              "widthDefault": 60
+            },
+            "id": "3df10f90-61b4-6a7e-036e-2bce12ad3fac"
+          },
+          {
+            "name": "job",
+            "comment": "업무",
+            "dataType": "varchar2(9)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "350bb1d4-9f00-8031-2661-603b8a8e8f40"
+          },
+          {
+            "name": "mgr",
+            "comment": "상사",
+            "dataType": "number(4)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 63,
+              "widthDefault": 60
+            },
+            "id": "ced1c375-52e0-1ea4-a32c-c0ecba0de5d7"
+          },
+          {
+            "name": "hiredate",
+            "comment": "고용일",
+            "dataType": "date",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "493a334e-e181-cfbb-b1b1-3c9ef3415c97"
+          },
+          {
+            "name": "sal",
+            "comment": "급여",
+            "dataType": "number(7,2)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 73,
+              "widthDefault": 60
+            },
+            "id": "e47a940a-42c0-5beb-4d72-8ce20960b46c"
+          },
+          {
+            "name": "comm",
+            "comment": "커미션",
+            "dataType": "number(7,2)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 73,
+              "widthDefault": 60
+            },
+            "id": "4b63d55e-f6ae-e96b-b1ca-6f9fd46de134"
+          },
+          {
+            "name": "deptno",
+            "comment": "부서번호",
+            "dataType": "number(2)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 63,
+              "widthDefault": 60
+            },
+            "id": "ff45a0db-73ef-32e6-08a6-14f4d983f600"
+          }
+        ],
+        "ui": {
+          "active": true,
+          "left": 255,
+          "top": 298,
+          "zIndex": 147,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "id": "da9b93a0-8df3-ee6d-07a1-cd9daea52364"
+      }
+    ],
+    "indexes": []
+  },
+  "memo": {
+    "memos": []
+  },
+  "relationship": {
+    "relationships": [
+      {
+        "identification": false,
+        "start": {
+          "tableId": "87a7d3b2-baf9-5b18-1aef-22080f72e527",
+          "columnIds": [
+            "b60745dc-0772-6ebd-00e5-1c6eb539af1b"
+          ],
+          "x": 396,
+          "y": 178.25,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "da9b93a0-8df3-ee6d-07a1-cd9daea52364",
+          "columnIds": [
+            "ff45a0db-73ef-32e6-08a6-14f4d983f600"
+          ],
+          "x": 435.5,
+          "y": 298,
+          "direction": "top"
+        },
+        "id": "6b451bcf-ac0a-91bd-4878-cc7904fdba49",
+        "relationshipType": "ZeroOneN"
+      }
+    ]
+  }
+}
